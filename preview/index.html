@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopVentus - Logo全屏开场动画预览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0b1929;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* ===== Logo全屏开场动画 ===== */
+        .logo-intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #0b1929 0%, #1a2f44 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: logoIntro 3s ease-in-out forwards;
+        }
+        
+        .logo-intro video {
+            width: 60%;
+            max-width: 600px;
+            height: auto;
+            animation: logoScale 3s ease-in-out forwards;
+        }
+        
+        @keyframes logoIntro {
+            0% {
+                opacity: 1;
+                visibility: visible;
+            }
+            70% {
+                opacity: 1;
+                visibility: visible;
+            }
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        
+        @keyframes logoScale {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            60% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.15) translate(-280%, -380%);
+                opacity: 0;
+            }
+        }
+        
+        /* ===== 网站内容 ===== */
+        .site-content {
+            opacity: 0;
+            animation: contentFadeIn 0.8s ease-in-out 2.5s forwards;
+        }
+        
+        @keyframes contentFadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 12px 0;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-video {
+            width: 140px;
+            height: 45px;
+            object-fit: contain;
+            border-radius: 6px;
+            background: transparent;
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .nav a {
+            color: #334155;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        .nav a:hover {
+            color: #c2410c;
+        }
+        
+        .btn-primary {
+            background: #c2410c;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background: #9a3412;
+            transform: translateY(-2px);
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0b1929 0%, #1a2f44 100%);
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            color: #c2410c;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-outline {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline:hover {
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Products */
+        .products {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+            color: #0b1929;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, #1a2f44, #0b1929);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        .product-body {
+            padding: 24px;
+        }
+        
+        .product-body h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #0b1929;
+        }
+        
+        .product-body p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #070f17;
+            color: #94a3b8;
+            padding: 60px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: 'TOPVENTUS';
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            transform: translateY(-50%);
+            font-size: 8rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            letter-spacing: 4px;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-brand h3 {
+            color: #fff;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+        
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 300px;
+        }
+        
+        .footer-col h4 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+        
+        .footer-col a {
+            display: block;
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 4px 0;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-col a:hover {
+            color: #c2410c;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin-top: 40px;
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.85rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 1024px) {
+            .logo-video {
+                width: 120px;
+                height: 38px;
+            }
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            .logo-video {
+                width: 100px;
+                height: 32px;
+            }
+            .nav {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer::before {
+                font-size: 4rem;
+            }
+            .logo-intro video {
+                width: 80%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-video {
+                width: 80px;
+                height: 26px;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+        
+        /* 跳过动画按钮 */
+        .skip-intro {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 10000;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            animation: skipFadeIn 0.5s ease-in-out 1s forwards;
+            opacity: 0;
+        }
+        
+        .skip-intro:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        @keyframes skipFadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* 说明文字 */
+        .demo-note {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            color: #92400e;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo全屏开场动画 -->
+    <div class="logo-intro" id="logoIntro">
+        <video autoplay muted loop playsinline>
+            <source src="../images/topventus-logo.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <!-- 跳过动画按钮 -->
+    <button class="skip-intro" id="skipIntro" onclick="skipIntro()">跳过动画 →</button>
+    
+    <!-- 网站内容 -->
+    <div class="site-content">
+        <div class="demo-note">
+            <strong>预览说明：</strong>这是Logo全屏开场动画的预览效果。页面加载时Logo全屏显示2秒，然后动画缩小到左上角，同时网站内容淡入。点击右下角"跳过动画"可以立即进入网站。
+        </div>
+        
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="logo">
+                    <video class="logo-video" autoplay muted loop playsinline>
+                        <source src="../images/topventus-logo.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <nav class="nav">
+                    <a href="#">Главная</a>
+                    <a href="#">Продукция</a>
+                    <a href="#">Проекты</a>
+                    <a href="#">Новости</a>
+                    <a href="#">О компании</a>
+                    <a href="#" class="btn-primary">Запросить КП</a>
+                </nav>
+            </div>
+        </header>
+        
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container">
+                <h1>Профессиональное вентиляционное <span>оборудование</span></h1>
+                <p>Полный спектр вентиляционного оборудования с сертификацией CE, EAC, CCCF. Производство в Китае, экспорт в Центральную Азию.</p>
+                <div class="hero-actions">
+                    <a href="#" class="btn-primary">Смотреть каталог →</a>
+                    <a href="#" class="btn-outline">Запросить报价</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Products -->
+        <section class="products">
+            <div class="container">
+                <h2 class="section-title">Наша продукция</h2>
+                <p class="section-subtitle">Заслонки, диффузоры, шумоглушители, противопожарные клапаны и системы дымоудаления</p>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">⚙️</div>
+                        <div class="product-body">
+                            <h3>Центробежный вентилятор</h3>
+                            <p>Высокопроизводительный центробежный вентилятор для промышленных систем вентиляции.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">🔥</div>
+                        <div class="product-body">
+                            <h3>Противопожарный клапан</h3>
+                            <p>Сертифицированный противопожарный клапан 70°C/280°C для систем дымоудаления.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">🔇</div>
+                        <div class="product-body">
+                            <h3>Шумоглушитель</h3>
+                            <p>Эффективный шумоглушитель для снижения уровня шума в вентиляционных системах.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <h3>TopVentus</h3>
+                        <p>Производитель вентиляционного оборудования из Китая. Экспорт в Центральную Азию с 2008 года.</p>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Продукция</h4>
+                        <a href="#">Вентиляторы</a>
+                        <a href="#">Клапаны</a>
+                        <a href="#">Шумоглушители</a>
+                        <a href="#">Аксессуары</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Компания</h4>
+                        <a href="#">О нас</a>
+                        <a href="#">Проекты</a>
+                        <a href="#">Новости</a>
+                        <a href="#">Контакты</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Поддержка</h4>
+                        <a href="#">FAQ</a>
+                        <a href="#">Доставка</a>
+                        <a href="#">Гарантия</a>
+                        <a href="#">Политика</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    © 2026 TopVentus. Все права защищены.
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        function skipIntro() {
+            const intro = document.getElementById('logoIntro');
+            const skipBtn = document.getElementById('skipIntro');
+            const content = document.querySelector('.site-content');
+            
+            intro.style.animation = 'none';
+            intro.style.opacity = '0';
+            intro.style.visibility = 'hidden';
+            
+            skipBtn.style.display = 'none';
+            
+            content.style.animation = 'none';
+            content.style.opacity = '1';
+        }
+        
+        // 动画结束后隐藏跳过按钮
+        setTimeout(() => {
+            const skipBtn = document.getElementById('skipIntro');
+            if (skipBtn) {
+                skipBtn.style.display = 'none';
+            }
+        }, 3500);
+    </script>
+</body>
+</html>
