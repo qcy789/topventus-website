@@ -25,10 +25,10 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            /* 半透明深色背景，能看到后面的网站内容 */
-            background: linear-gradient(135deg, rgba(11, 25, 41, 0.85) 0%, rgba(26, 47, 68, 0.8) 100%);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            /* 半透明深色背景，与主题色一致 */
+            background: linear-gradient(135deg, rgba(11, 25, 41, 0.92) 0%, rgba(26, 47, 68, 0.88) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -49,33 +49,42 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at center, rgba(194, 65, 12, 0.15) 0%, transparent 60%);
+            background: radial-gradient(circle at center, rgba(194, 65, 12, 0.2) 0%, transparent 60%);
         }
 
         .logo-wrapper {
             position: relative;
             z-index: 1;
             text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
+        /* 全屏Logo视频 */
         .logo-wrapper video {
-            width: 450px;
-            max-width: 80vw;
+            width: 70vw;
+            max-width: 700px;
             height: auto;
+            max-height: 70vh;
             display: block;
             margin: 0 auto;
-            filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
+            filter: drop-shadow(0 30px 80px rgba(0, 0, 0, 0.6));
+            object-fit: contain;
         }
 
         .tagline {
             text-align: center;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1.1rem;
-            margin-top: 30px;
-            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.3rem;
+            margin-top: 40px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             position: relative;
             z-index: 1;
+            font-weight: 300;
         }
 
         /* ===== 跳过按钮 ===== */
@@ -104,26 +113,27 @@
         .site-content {
             opacity: 0;
             transition: opacity 0.8s ease;
+            min-height: 100vh;
         }
 
         .site-content.visible {
             opacity: 1;
         }
 
-        /* ===== Header ===== */
+        /* ===== Header - 深色主题色 ===== */
         .header {
-            background: rgba(11, 25, 41, 0.95);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, #0b1929 0%, #1a2f44 100%);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .header-inner {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 15px 32px;
+            padding: 12px 32px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -135,7 +145,7 @@
             gap: 12px;
         }
 
-        /* 左上角Logo视频，更大尺寸，透明背景与Header融合 */
+        /* 左上角Logo视频 - 透明背景，与深色Header融合 */
         .logo-video {
             width: 240px;
             height: 76px;
@@ -183,18 +193,32 @@
             background: #ea580c;
         }
 
-        /* ===== Hero区域 ===== */
+        /* ===== Hero区域 - 深色主题 ===== */
         .hero {
-            background: linear-gradient(135deg, #0b1929 0%, #1a2f44 100%);
+            background: linear-gradient(135deg, #0b1929 0%, #1a2f44 50%, #0b1929 100%);
             color: #fff;
             padding: 100px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(194, 65, 12, 0.15) 0%, transparent 50%);
         }
 
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 20px;
             font-weight: 800;
+            position: relative;
+            z-index: 1;
         }
 
         .hero p {
@@ -202,12 +226,16 @@
             color: rgba(255, 255, 255, 0.8);
             max-width: 700px;
             margin: 0 auto 40px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-buttons {
             display: flex;
             gap: 20px;
             justify-content: center;
+            position: relative;
+            z-index: 1;
         }
 
         .btn-secondary {
@@ -287,9 +315,9 @@
             line-height: 1.6;
         }
 
-        /* ===== Footer ===== */
+        /* ===== Footer - 深色主题 ===== */
         .footer {
-            background: #0b1929;
+            background: linear-gradient(135deg, #0b1929 0%, #1a2f44 100%);
             color: rgba(255, 255, 255, 0.7);
             padding: 50px 0;
             text-align: center;
@@ -312,6 +340,10 @@
             }
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .logo-wrapper video {
+                width: 80vw;
+                max-width: 550px;
             }
         }
 
@@ -364,10 +396,12 @@
                 font-size: 1.6rem;
             }
             .logo-wrapper video {
-                width: 350px;
+                width: 85vw;
+                max-width: 400px;
             }
             .tagline {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
+                letter-spacing: 2px;
             }
             .skip-btn {
                 bottom: 20px;
@@ -395,20 +429,11 @@
                 padding: 25px;
             }
             .logo-wrapper video {
-                width: 280px;
+                width: 90vw;
+                max-width: 320px;
             }
         }
     </style>
-
-<meta property="og:title" content="TopVentus - Logo全屏开场动画预览">
-<meta property="og:description" content="TopVentus - Professional ventilation equipment manufacturer. Industrial and commercial HVAC solutions.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://topventus.com/preview/index">
-<meta property="og:image" content="https://topventus.com/images/factory-bg.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="TopVentus - Logo全屏开场动画预览">
-<meta name="twitter:description" content="TopVentus - Professional ventilation equipment manufacturer.">
-<meta name="twitter:image" content="https://topventus.com/images/factory-bg.jpg">
 </head>
 <body>
     <!-- Logo全屏开场动画 -->
@@ -424,7 +449,7 @@
 
     <!-- 网站内容 -->
     <div class="site-content" id="siteContent">
-        <!-- Header -->
+        <!-- Header - 深色主题色 -->
         <header class="header">
             <div class="header-inner">
                 <div class="logo-container">
@@ -443,7 +468,7 @@
             </div>
         </header>
 
-        <!-- Hero -->
+        <!-- Hero - 深色主题 -->
         <section class="hero">
             <div class="container">
                 <h1>TopVentus Ventilation Equipment</h1>
@@ -479,7 +504,7 @@
             </div>
         </section>
 
-        <!-- Footer -->
+        <!-- Footer - 深色主题 -->
         <footer class="footer">
             <div class="container">
                 <p>&copy; 2026 TopVentus Ventilation Equipment Co., Ltd. All rights reserved.</p>
@@ -492,10 +517,10 @@
         let introTimeout;
 
         function startIntro() {
-            // 4秒后自动隐藏动画
+            // 4.5秒后自动隐藏动画
             introTimeout = setTimeout(function() {
                 hideIntro();
-            }, 4000);
+            }, 4500);
         }
 
         function hideIntro() {
@@ -515,13 +540,13 @@
             startIntro();
         });
 
-        // 如果视频加载失败，3秒后自动隐藏
+        // 如果视频加载失败或超时，5.5秒后强制隐藏
         setTimeout(function() {
             var intro = document.getElementById('logoIntro');
             if (!intro.classList.contains('hidden')) {
                 hideIntro();
             }
-        }, 6000);
+        }, 5500);
     </script>
 </body>
 </html>
