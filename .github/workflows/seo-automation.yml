@@ -173,14 +173,27 @@ jobs:
               print('No SEO issues found')
           "
 
-      - name: Submit to search engines
+      - name: Submit to search engines (Bing API)
         env:
           BING_API_KEY: ${{ secrets.BING_API_KEY }}
-          YANDEX_USERNAME: ${{ secrets.YANDEX_USERNAME }}
-          YANDEX_API_KEY: ${{ secrets.YANDEX_API_KEY }}
         run: |
-          echo "=== 提交到搜索引擎 ==="
-          python search_engine_submitter.py
+          echo "=== 提交到Bing搜索引擎 ==="
+          if [ -z "$BING_API_KEY" ]; then
+            echo "未配置BING_API_KEY，跳过Bing提交"
+          else
+            python search_engine_submitter.py
+          fi
+
+      - name: Submit new URLs via IndexNow (Yandex + Bing)
+        env:
+          INDEXNOW_KEY: ${{ secrets.BING_API_KEY }}
+        run: |
+          echo "=== IndexNow自动提交（Yandex + Bing）==="
+          if [ -z "$INDEXNOW_KEY" ]; then
+            echo "未配置INDEXNOW_KEY，跳过IndexNow提交"
+          else
+            python indexnow_submitter.py
+          fi
 
       - name: Lighthouse performance audit
         continue-on-error: true
