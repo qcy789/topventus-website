@@ -28,6 +28,59 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
+      - name: Generate AI articles
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          echo "=== 生成AI文章 ==="
+          if [ -z "$DEEPSEEK_API_KEY" ]; then
+            echo "未配置DEEPSEEK_API_KEY，跳过文章生成"
+          else
+            python ai_article_generator.py
+          fi
+
+      - name: Generate social media meta tags
+        run: |
+          echo "=== 优化社媒meta标签 ==="
+          python -c "
+          import os
+          import re
+
+          updated = 0
+          for root, dirs, files in os.walk('.'):
+              for f in files:
+                  if f.endswith('.html'):
+                      filepath = os.path.join(root, f)
+                      with open(filepath, 'r', encoding='utf-8') as file:
+                          content = file.read()
+
+                      changed = False
+
+                      # 添加Open Graph标签（如果没有）
+                      if 'property=\"og:title\"' not in content:
+                          title_match = re.search(r'<title>(.*?)</title>', content)
+                          if title_match:
+                              title = title_match.group(1)
+                              og_tags = f'''
+          <meta property=\"og:title\" content=\"{title}\">
+          <meta property=\"og:description\" content=\"TopVentus - профессиональный производитель вентиляционного оборудования\">
+          <meta property=\"og:type\" content=\"website\">
+          <meta property=\"og:url\" content=\"https://topventus.com/{filepath.replace('./', '').replace('.html', '')}\">
+          <meta name=\"twitter:card\" content=\"summary_large_image\">
+          <meta name=\"twitter:title\" content=\"{title}\">
+          <meta name=\"twitter:description\" content=\"TopVentus - профессиональный производитель вентиляционного оборудования\">
+          '''
+                              content = content.replace('</head>', og_tags + '</head>')
+                              changed = True
+
+                      if changed:
+                          with open(filepath, 'w', encoding='utf-8') as file:
+                              file.write(content)
+                          updated += 1
+
+          print(f'优化了 {updated} 个页面的社媒meta标签')
+          "
+
       - name: Generate sitemap
         run: |
           python -c "
@@ -110,7 +163,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "SEO automation: update sitemap"
+            git commit -m "SEO automation: update articles, sitemap and meta tags"
             git push
             echo "Changes committed and pushed"
           fi
