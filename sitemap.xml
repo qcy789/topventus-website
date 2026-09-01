@@ -235,6 +235,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://topventus.com/preview/index</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://topventus.com/product-1</loc>
     <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
