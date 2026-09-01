@@ -183,9 +183,10 @@ jobs:
           python search_engine_submitter.py
 
       - name: Lighthouse performance audit
+        continue-on-error: true
         run: |
           echo "=== Lighthouse性能检查 ==="
-          lighthouse https://topventus.com --output=json --output-path=./lighthouse-report.json --chrome-flags="--headless --no-sandbox" --quiet || echo "Lighthouse检查完成（或跳过）"
+          npx lighthouse https://topventus.com --output=json --output-path=./lighthouse-report.json --chrome-flags="--headless --no-sandbox --disable-gpu" --quiet 2>&1 || echo "Lighthouse检查跳过"
           if [ -f lighthouse-report.json ]; then
             echo "Lighthouse报告已生成"
             python -c "
@@ -196,7 +197,9 @@ jobs:
             print('性能分数:')
             for key, cat in scores.items():
                 print(f'  {cat.get(\"title\", key)}: {int(cat.get(\"score\", 0)*100)}')
-            "
+            " || echo "解析Lighthouse报告失败"
+          else
+            echo "Lighthouse报告未生成，跳过"
           fi
 
       - name: Commit and push changes
