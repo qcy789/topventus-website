@@ -23,10 +23,16 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Setup Node.js (for Lighthouse)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests
+          npm install -g lighthouse
 
       - name: Generate AI articles
         env:
@@ -37,6 +43,17 @@ jobs:
             echo "未配置DEEPSEEK_API_KEY，跳过文章生成"
           else
             python ai_article_generator.py
+          fi
+
+      - name: Generate social media content
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          echo "=== 生成社媒推广文案 ==="
+          if [ -z "$DEEPSEEK_API_KEY" ]; then
+            echo "未配置DEEPSEEK_API_KEY，跳过社媒内容生成"
+          else
+            python social_media_generator.py
           fi
 
       - name: Generate social media meta tags
@@ -56,19 +73,20 @@ jobs:
 
                       changed = False
 
-                      # 添加Open Graph标签（如果没有）
                       if 'property=\"og:title\"' not in content:
                           title_match = re.search(r'<title>(.*?)</title>', content)
                           if title_match:
                               title = title_match.group(1)
                               og_tags = f'''
           <meta property=\"og:title\" content=\"{title}\">
-          <meta property=\"og:description\" content=\"TopVentus - профессиональный производитель вентиляционного оборудования\">
+          <meta property=\"og:description\" content=\"TopVentus - Professional ventilation equipment manufacturer. Industrial and commercial HVAC solutions.\">
           <meta property=\"og:type\" content=\"website\">
           <meta property=\"og:url\" content=\"https://topventus.com/{filepath.replace('./', '').replace('.html', '')}\">
+          <meta property=\"og:image\" content=\"https://topventus.com/images/factory-bg.jpg\">
           <meta name=\"twitter:card\" content=\"summary_large_image\">
           <meta name=\"twitter:title\" content=\"{title}\">
-          <meta name=\"twitter:description\" content=\"TopVentus - профессиональный производитель вентиляционного оборудования\">
+          <meta name=\"twitter:description\" content=\"TopVentus - Professional ventilation equipment manufacturer.\">
+          <meta name=\"twitter:image\" content=\"https://topventus.com/images/factory-bg.jpg\">
           '''
                               content = content.replace('</head>', og_tags + '</head>')
                               changed = True
@@ -155,6 +173,32 @@ jobs:
               print('No SEO issues found')
           "
 
+      - name: Submit to search engines
+        env:
+          BING_API_KEY: ${{ secrets.BING_API_KEY }}
+          YANDEX_USERNAME: ${{ secrets.YANDEX_USERNAME }}
+          YANDEX_API_KEY: ${{ secrets.YANDEX_API_KEY }}
+        run: |
+          echo "=== 提交到搜索引擎 ==="
+          python search_engine_submitter.py
+
+      - name: Lighthouse performance audit
+        run: |
+          echo "=== Lighthouse性能检查 ==="
+          lighthouse https://topventus.com --output=json --output-path=./lighthouse-report.json --chrome-flags="--headless --no-sandbox" --quiet || echo "Lighthouse检查完成（或跳过）"
+          if [ -f lighthouse-report.json ]; then
+            echo "Lighthouse报告已生成"
+            python -c "
+            import json
+            with open('lighthouse-report.json', 'r') as f:
+                report = json.load(f)
+            scores = report.get('categories', {})
+            print('性能分数:')
+            for key, cat in scores.items():
+                print(f'  {cat.get(\"title\", key)}: {int(cat.get(\"score\", 0)*100)}')
+            "
+          fi
+
       - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions[bot]'
@@ -163,7 +207,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "SEO automation: update articles, sitemap and meta tags"
+            git commit -m "SEO automation: update articles, social content, sitemap and meta tags"
             git pull --rebase origin main
             git push
             echo "Changes committed and pushed"
