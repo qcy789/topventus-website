@@ -164,6 +164,7 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "SEO automation: update articles, sitemap and meta tags"
+            git pull --rebase origin main
             git push
             echo "Changes committed and pushed"
           fi
