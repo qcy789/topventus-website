@@ -118,6 +118,116 @@ TOPICS = [
         'keywords_en': ['regulations', 'EAEU', 'ventilation standards', 'certification'],
         'keywords_zh': ['规范标准', '欧亚联盟', '通风要求', '认证'],
         'category': 'regulations'
+    },
+    {
+        'id': 'project-case-hospital',
+        'title_ru': 'Кейс: система вентиляции для медицинского центра',
+        'title_en': 'Case Study: Ventilation System for a Medical Center',
+        'title_zh': '项目案例：医疗中心通风系统设计与实施',
+        'keywords_ru': ['медицинская вентиляция', 'кейс проекта', 'вентиляция больницы', 'чистые помещения'],
+        'keywords_en': ['medical ventilation', 'case study', 'hospital ventilation', 'clean rooms'],
+        'keywords_zh': ['医疗通风', '项目案例', '医院通风', '洁净室'],
+        'category': 'case-study'
+    },
+    {
+        'id': 'project-case-shopping',
+        'title_ru': 'Кейс: вентиляция торгового центра площадью 50000 м²',
+        'title_en': 'Case Study: Ventilation for 50,000 m² Shopping Mall',
+        'title_zh': '项目案例：5万平米商业综合体通风系统',
+        'keywords_ru': ['вентиляция ТЦ', 'торговый центр', 'кейс', 'приточная вентиляция'],
+        'keywords_en': ['mall ventilation', 'shopping center', 'case study', 'supply ventilation'],
+        'keywords_zh': ['商场通风', '商业中心', '案例', '送风系统'],
+        'category': 'case-study'
+    },
+    {
+        'id': 'tech-guide-damper-selection',
+        'title_ru': 'Техническое руководство: как выбрать противопожарный клапан',
+        'title_en': 'Technical Guide: How to Choose a Fire Damper',
+        'title_zh': '技术指南：如何正确选择防火阀',
+        'keywords_ru': ['выбор клапана', 'противопожарный клапан', 'техническое руководство', '70°C 280°C'],
+        'keywords_en': ['damper selection', 'fire damper', 'technical guide', '70°C 280°C'],
+        'keywords_zh': ['阀门选型', '防火阀', '技术指南', '70度 280度'],
+        'category': 'tech-guide'
+    },
+    {
+        'id': 'tech-guide-duct-sizing',
+        'title_ru': 'Техническое руководство: расчет сечения воздуховодов',
+        'title_en': 'Technical Guide: Duct Sizing Calculation',
+        'title_zh': '技术指南：风管截面积计算方法',
+        'keywords_ru': ['расчет воздуховодов', 'сечение воздуховода', 'скорость воздуха', 'техническое руководство'],
+        'keywords_en': ['duct sizing', 'duct calculation', 'air velocity', 'technical guide'],
+        'keywords_zh': ['风管计算', '风管尺寸', '风速', '技术指南'],
+        'category': 'tech-guide'
+    },
+    {
+        'id': 'market-analysis-2026',
+        'title_ru': 'Анализ рынка вентиляционного оборудования 2026',
+        'title_en': 'Ventilation Equipment Market Analysis 2026',
+        'title_zh': '2026年通风设备市场分析与趋势预测',
+        'keywords_ru': ['анализ рынка', '2026', 'тенденции', 'вентиляционное оборудование'],
+        'keywords_en': ['market analysis', '2026', 'trends', 'ventilation equipment'],
+        'keywords_zh': ['市场分析', '2026', '趋势', '通风设备'],
+        'category': 'market'
+    },
+    {
+        'id': 'installation-guide',
+        'title_ru': 'Руководство по монтажу систем вентиляции',
+        'title_en': 'Ventilation System Installation Guide',
+        'title_zh': '通风系统安装施工完整指南',
+        'keywords_ru': ['монтаж вентиляции', 'установка', 'руководство', 'воздуховоды'],
+        'keywords_en': ['ventilation installation', 'setup', 'guide', 'ductwork'],
+        'keywords_zh': ['通风安装', '施工', '指南', '风管'],
+        'category': 'guide'
+    },
+    {
+        'id': 'troubleshooting',
+        'title_ru': 'Диагностика и устранение неисправностей вентиляции',
+        'title_en': 'Ventilation System Troubleshooting and Repair',
+        'title_zh': '通风系统常见故障诊断与排除方法',
+        'keywords_ru': ['неисправности вентиляции', 'диагностика', 'ремонт', 'проблемы'],
+        'keywords_en': ['ventilation problems', 'troubleshooting', 'repair', 'issues'],
+        'keywords_zh': ['通风故障', '诊断', '维修', '问题'],
+        'category': 'guide'
+    },
+    {
+        'id': 'industry-trends-iot',
+        'title_ru': 'Индустрия 4.0: умные системы вентиляции и IoT',
+        'title_en': 'Industry 4.0: Smart Ventilation Systems and IoT',
+        'title_zh': '工业4.0：智能通风系统与物联网技术应用',
+        'keywords_ru': ['умная вентиляция', 'IoT', 'индустрия 4.0', 'автоматизация'],
+        'keywords_en': ['smart ventilation', 'IoT', 'industry 4.0', 'automation'],
+        'keywords_zh': ['智能通风', '物联网', '工业4.0', '自动化'],
+        'category': 'trends'
+    },
+    {
+        'id': 'product-comparison',
+        'title_ru': 'Сравнение: круглые vs прямоугольные воздуховоды',
+        'title_en': 'Comparison: Round vs Rectangular Ducts',
+        'title_zh': '产品对比：圆形风管 vs 矩形风管的选择',
+        'keywords_ru': ['круглые воздуховоды', 'прямоугольные воздуховоды', 'сравнение', 'выбор'],
+        'keywords_en': ['round ducts', 'rectangular ducts', 'comparison', 'selection'],
+        'keywords_zh': ['圆形风管', '矩形风管', '对比', '选型'],
+        'category': 'products'
+    },
+    {
+        'id': 'export-guide-central-asia',
+        'title_ru': 'Экспорт вентиляционного оборудования в Центральную Азию: руководство',
+        'title_en': 'Exporting Ventilation Equipment to Central Asia: A Guide',
+        'title_zh': '通风设备出口中亚市场完整指南',
+        'keywords_ru': ['экспорт', 'Центральная Азия', 'таможня', 'доставка', 'сертификация'],
+        'keywords_en': ['export', 'Central Asia', 'customs', 'shipping', 'certification'],
+        'keywords_zh': ['出口', '中亚', '清关', '物流', '认证'],
+        'category': 'guide'
+    },
+    {
+        'id': 'green-building',
+        'title_ru': 'Зеленое строительство: энергоэффективная вентиляция',
+        'title_en': 'Green Building: Energy-Efficient Ventilation Solutions',
+        'title_zh': '绿色建筑：节能通风系统解决方案',
+        'keywords_ru': ['зеленое строительство', 'энергоэффективность', 'экология', 'LEED'],
+        'keywords_en': ['green building', 'energy efficiency', 'sustainability', 'LEED'],
+        'keywords_zh': ['绿色建筑', '节能', '环保', 'LEED认证'],
+        'category': 'trends'
     }
 ]
 
