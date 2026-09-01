@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TopVentus - Logo全屏开场动画预览</title>
+    <title>TopVentus - Logo全屏开场动画预览（优化版）</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0b1929;
-            color: #fff;
+            background: #f8fafc;
+            color: #0f172a;
             overflow-x: hidden;
         }
-        
+
         /* ===== Logo全屏开场动画 ===== */
         .logo-intro {
             position: fixed;
@@ -25,27 +25,57 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: linear-gradient(135deg, #0b1929 0%, #1a2f44 100%);
+            /* 半透明深色背景，与主题色一致 */
+            background: linear-gradient(135deg, rgba(11, 25, 41, 0.97) 0%, rgba(26, 47, 68, 0.95) 100%);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            animation: logoIntro 3s ease-in-out forwards;
+            animation: logoIntro 3.5s ease-in-out forwards;
         }
-        
+
+        .logo-intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(194, 65, 12, 0.1) 0%, transparent 60%);
+        }
+
+        .logo-intro .logo-wrapper {
+            position: relative;
+            z-index: 1;
+            animation: logoScale 3.5s ease-in-out forwards;
+        }
+
         .logo-intro video {
-            width: 60%;
-            max-width: 600px;
+            width: 50%;
+            max-width: 500px;
             height: auto;
-            animation: logoScale 3s ease-in-out forwards;
+            display: block;
+            filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4));
         }
-        
+
+        .logo-intro .tagline {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            margin-top: 30px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeInOut 3.5s ease-in-out forwards;
+        }
+
         @keyframes logoIntro {
             0% {
                 opacity: 1;
                 visibility: visible;
             }
-            70% {
+            75% {
                 opacity: 1;
                 visibility: visible;
             }
@@ -54,536 +84,457 @@
                 visibility: hidden;
             }
         }
-        
+
         @keyframes logoScale {
             0% {
-                transform: scale(1);
+                transform: scale(1) translate(0, 0);
                 opacity: 1;
             }
-            60% {
-                transform: scale(1);
+            65% {
+                transform: scale(1) translate(0, 0);
                 opacity: 1;
             }
             100% {
-                transform: scale(0.15) translate(-280%, -380%);
+                /* 缩小到左上角，比例更大（从500px缩到200px，约0.4倍） */
+                transform: scale(0.4) translate(-140%, -280%);
                 opacity: 0;
             }
         }
-        
+
+        @keyframes fadeInOut {
+            0%, 80% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* ===== 跳过按钮 ===== */
+        .skip-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 10000;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 28px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            animation: fadeInOut 3.5s ease-in-out forwards;
+        }
+
+        .skip-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
         /* ===== 网站内容 ===== */
         .site-content {
             opacity: 0;
-            animation: contentFadeIn 0.8s ease-in-out 2.5s forwards;
+            animation: contentFadeIn 0.8s ease-in-out 3s forwards;
         }
-        
+
         @keyframes contentFadeIn {
             to {
                 opacity: 1;
             }
         }
-        
-        /* Header */
+
+        /* ===== Header（左上角Logo，半透明背景，更大尺寸） ===== */
         .header {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
+            /* 半透明背景，与主题色一致 */
+            background: rgba(11, 25, 41, 0.92);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid #e2e8f0;
-            padding: 12px 0;
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 0;
         }
-        
+
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 40px;
         }
-        
-        .header .container {
+
+        .header-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            text-decoration: none;
         }
-        
+
+        /* 左上角Logo视频，更大尺寸 */
         .logo-video {
-            width: 140px;
-            height: 45px;
+            width: 200px;
+            height: 64px;
             object-fit: contain;
-            border-radius: 6px;
-            background: transparent;
+            border-radius: 8px;
+            /* 半透明背景，与主题色一致 */
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 8px;
         }
-        
+
+        .logo-text {
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
         .nav {
             display: flex;
             align-items: center;
             gap: 32px;
         }
-        
+
         .nav a {
-            color: #334155;
+            color: rgba(255, 255, 255, 0.85);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
             transition: color 0.3s;
         }
-        
+
         .nav a:hover {
             color: #c2410c;
         }
-        
+
         .btn-primary {
             background: #c2410c;
             color: #fff;
             padding: 10px 24px;
-            border-radius: 8px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
             transition: all 0.3s;
         }
-        
+
         .btn-primary:hover {
-            background: #9a3412;
-            transform: translateY(-2px);
+            background: #ea580c;
+            transform: translateY(-1px);
         }
-        
-        /* Hero */
+
+        /* ===== Hero区域 ===== */
         .hero {
-            padding: 100px 0;
             background: linear-gradient(135deg, #0b1929 0%, #1a2f44 100%);
+            color: #fff;
+            padding: 100px 0;
             text-align: center;
         }
-        
+
         .hero h1 {
             font-size: 3rem;
-            font-weight: 800;
             margin-bottom: 20px;
-            line-height: 1.2;
+            font-weight: 800;
         }
-        
-        .hero h1 span {
-            color: #c2410c;
-        }
-        
+
         .hero p {
             font-size: 1.2rem;
-            color: #94a3b8;
+            color: rgba(255, 255, 255, 0.8);
             max-width: 700px;
             margin: 0 auto 40px;
-            line-height: 1.7;
         }
-        
-        .hero-actions {
+
+        .hero-buttons {
             display: flex;
-            gap: 16px;
+            gap: 20px;
             justify-content: center;
-            flex-wrap: wrap;
         }
-        
+
         .btn-outline {
             border: 2px solid rgba(255, 255, 255, 0.3);
             color: #fff;
             padding: 12px 32px;
-            border-radius: 8px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
         }
-        
+
         .btn-outline:hover {
-            border-color: #fff;
-            background: rgba(255, 255, 255, 0.1);
+            border-color: #c2410c;
+            background: rgba(194, 65, 12, 0.1);
         }
-        
-        /* Products */
-        .products {
+
+        /* ===== 内容区域 ===== */
+        .section {
             padding: 80px 0;
-            background: #f8fafc;
         }
-        
+
         .section-title {
             font-size: 2.2rem;
-            font-weight: 700;
             text-align: center;
-            margin-bottom: 16px;
-            color: #0b1929;
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            color: #64748b;
-            font-size: 1.1rem;
             margin-bottom: 50px;
+            color: #0f172a;
         }
-        
-        .products-grid {
+
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
-        
-        .product-card {
+
+        .feature-card {
             background: #fff;
+            padding: 40px;
             border-radius: 12px;
-            overflow: hidden;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s;
         }
-        
-        .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+
+        .feature-card:hover {
+            transform: translateY(-5px);
         }
-        
-        .product-image {
-            height: 200px;
-            background: linear-gradient(135deg, #1a2f44, #0b1929);
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0b1929, #c2410c);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
         }
-        
-        .product-body {
-            padding: 24px;
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #0f172a;
         }
-        
-        .product-body h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #0b1929;
-        }
-        
-        .product-body p {
+
+        .feature-card p {
             color: #64748b;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        
-        /* Footer */
-        .footer {
-            background: #070f17;
-            color: #94a3b8;
-            padding: 60px 0 30px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .footer::before {
-            content: 'TOPVENTUS';
-            position: absolute;
-            top: 50%;
-            right: -20px;
-            transform: translateY(-50%);
-            font-size: 8rem;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.03);
-            letter-spacing: 4px;
-            white-space: nowrap;
-            pointer-events: none;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .footer-brand h3 {
-            color: #fff;
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-        }
-        
-        .footer-brand p {
-            font-size: 0.9rem;
             line-height: 1.7;
-            max-width: 300px;
         }
-        
-        .footer-col h4 {
-            color: #fff;
-            font-size: 1rem;
-            margin-bottom: 16px;
-        }
-        
-        .footer-col a {
-            display: block;
-            color: #94a3b8;
-            text-decoration: none;
-            padding: 4px 0;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-        
-        .footer-col a:hover {
-            color: #c2410c;
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            margin-top: 40px;
-            padding-top: 24px;
+
+        /* ===== Footer ===== */
+        .footer {
+            background: #0b1929;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 40px 0;
             text-align: center;
-            font-size: 0.85rem;
-            position: relative;
-            z-index: 1;
         }
-        
-        /* 移动端适配 */
+
+        /* ===== 移动端适配 ===== */
         @media (max-width: 1024px) {
-            .logo-video {
-                width: 120px;
-                height: 38px;
-            }
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        
-        @media (max-width: 768px) {
             .container {
-                padding: 0 20px;
+                padding: 0 24px;
             }
             .logo-video {
-                width: 100px;
-                height: 32px;
+                width: 160px;
+                height: 52px;
             }
             .nav {
-                display: none;
+                gap: 20px;
             }
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.4rem;
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            .header-inner {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .logo-video {
+                width: 140px;
+                height: 45px;
+            }
+            .logo-text {
+                font-size: 1.1rem;
+            }
+            .nav {
+                gap: 16px;
+                flex-wrap: wrap;
+            }
+            .nav a {
+                font-size: 0.85rem;
+            }
+            .btn-primary {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+            .hero {
+                padding: 60px 0;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
             }
             .hero p {
                 font-size: 1rem;
             }
-            .products-grid {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .features-grid {
                 grid-template-columns: 1fr;
             }
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer::before {
-                font-size: 4rem;
-            }
-            .logo-intro video {
-                width: 80%;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .logo-video {
-                width: 80px;
-                height: 26px;
-            }
-            .hero h1 {
-                font-size: 1.6rem;
+            .section {
+                padding: 50px 0;
             }
             .section-title {
                 font-size: 1.6rem;
             }
-        }
-        
-        /* 跳过动画按钮 */
-        .skip-intro {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 10000;
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 8px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.3s;
-            animation: skipFadeIn 0.5s ease-in-out 1s forwards;
-            opacity: 0;
-        }
-        
-        .skip-intro:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        @keyframes skipFadeIn {
-            to {
-                opacity: 1;
+            .logo-intro video {
+                width: 70%;
+                max-width: 350px;
+            }
+            .logo-intro .tagline {
+                font-size: 0.85rem;
+            }
+            .skip-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 10px 20px;
+                font-size: 0.8rem;
             }
         }
-        
-        /* 说明文字 */
-        .demo-note {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
-            padding: 16px 20px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
-            color: #92400e;
-            font-size: 0.9rem;
+
+        @media (max-width: 480px) {
+            .logo-video {
+                width: 120px;
+                height: 38px;
+            }
+            .nav {
+                gap: 12px;
+            }
+            .nav a {
+                font-size: 0.8rem;
+            }
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            .feature-card {
+                padding: 25px;
+            }
         }
     </style>
-
-<meta property="og:title" content="TopVentus - Logo全屏开场动画预览">
-<meta property="og:description" content="TopVentus - профессиональный производитель вентиляционного оборудования">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://topventus.com/preview/index">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="TopVentus - Logo全屏开场动画预览">
-<meta name="twitter:description" content="TopVentus - профессиональный производитель вентиляционного оборудования">
 </head>
 <body>
     <!-- Logo全屏开场动画 -->
     <div class="logo-intro" id="logoIntro">
-        <video autoplay muted loop playsinline>
-            <source src="../images/topventus-logo.mp4" type="video/mp4">
-        </video>
+        <div class="logo-wrapper">
+            <video autoplay muted loop playsinline>
+                <source src="../images/topventus-logo.mp4" type="video/mp4">
+            </video>
+            <div class="tagline">Professional Ventilation Solutions</div>
+        </div>
     </div>
-    
-    <!-- 跳过动画按钮 -->
-    <button class="skip-intro" id="skipIntro" onclick="skipIntro()">跳过动画 →</button>
-    
+
+    <!-- 跳过按钮 -->
+    <button class="skip-btn" onclick="skipIntro()">Пропустить</button>
+
     <!-- 网站内容 -->
     <div class="site-content">
-        <div class="demo-note">
-            <strong>预览说明：</strong>这是Logo全屏开场动画的预览效果。页面加载时Logo全屏显示2秒，然后动画缩小到左上角，同时网站内容淡入。点击右下角"跳过动画"可以立即进入网站。
-        </div>
-        
-        <!-- Header -->
+        <!-- Header（左上角Logo，半透明背景，更大尺寸） -->
         <header class="header">
             <div class="container">
-                <div class="logo">
-                    <video class="logo-video" autoplay muted loop playsinline>
-                        <source src="../images/topventus-logo.mp4" type="video/mp4">
-                    </video>
+                <div class="header-inner">
+                    <a href="#" class="logo">
+                        <video class="logo-video" autoplay muted loop playsinline>
+                            <source src="../images/topventus-logo.mp4" type="video/mp4">
+                        </video>
+                    </a>
+                    <nav class="nav">
+                        <a href="#">Главная</a>
+                        <a href="#">Продукция</a>
+                        <a href="#">Проекты</a>
+                        <a href="#">Новости</a>
+                        <a href="#">О нас</a>
+                        <a href="#" class="btn-primary">Запросить КП</a>
+                    </nav>
                 </div>
-                <nav class="nav">
-                    <a href="#">Главная</a>
-                    <a href="#">Продукция</a>
-                    <a href="#">Проекты</a>
-                    <a href="#">Новости</a>
-                    <a href="#">О компании</a>
-                    <a href="#" class="btn-primary">Запросить КП</a>
-                </nav>
             </div>
         </header>
-        
-        <!-- Hero -->
+
+        <!-- Hero区域 -->
         <section class="hero">
             <div class="container">
-                <h1>Профессиональное вентиляционное <span>оборудование</span></h1>
-                <p>Полный спектр вентиляционного оборудования с сертификацией CE, EAC, CCCF. Производство в Китае, экспорт в Центральную Азию.</p>
-                <div class="hero-actions">
-                    <a href="#" class="btn-primary">Смотреть каталог →</a>
-                    <a href="#" class="btn-outline">Запросить报价</a>
+                <h1>TopVentus</h1>
+                <p>Профессиональное вентиляционное оборудование для промышленных и коммерческих объектов. Качество, проверенное временем.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary">Смотреть каталог</a>
+                    <a href="#" class="btn-outline">Связаться с нами</a>
                 </div>
             </div>
         </section>
-        
-        <!-- Products -->
-        <section class="products">
+
+        <!-- 特性区域 -->
+        <section class="section">
             <div class="container">
-                <h2 class="section-title">Наша продукция</h2>
-                <p class="section-subtitle">Заслонки, диффузоры, шумоглушители, противопожарные клапаны и системы дымоудаления</p>
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-image">⚙️</div>
-                        <div class="product-body">
-                            <h3>Центробежный вентилятор</h3>
-                            <p>Высокопроизводительный центробежный вентилятор для промышленных систем вентиляции.</p>
-                        </div>
+                <h2 class="section-title">Наши преимущества</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🏭</div>
+                        <h3>Собственное производство</h3>
+                        <p>Современный завод с полным циклом производства. Контроль качества на каждом этапе.</p>
                     </div>
-                    <div class="product-card">
-                        <div class="product-image">🔥</div>
-                        <div class="product-body">
-                            <h3>Противопожарный клапан</h3>
-                            <p>Сертифицированный противопожарный клапан 70°C/280°C для систем дымоудаления.</p>
-                        </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📋</div>
+                        <h3>Сертифицированная продукция</h3>
+                        <p>Вся продукция соответствует стандартам ЕАЭС. Наличие всех необходимых сертификатов.</p>
                     </div>
-                    <div class="product-card">
-                        <div class="product-image">🔇</div>
-                        <div class="product-body">
-                            <h3>Шумоглушитель</h3>
-                            <p>Эффективный шумоглушитель для снижения уровня шума в вентиляционных системах.</p>
-                        </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚚</div>
+                        <h3>Доставка по всему миру</h3>
+                        <p>Оперативная отгрузка и доставка в любую точку мира. Работаем с надежными логистическими партнерами.</p>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-brand">
-                        <h3>TopVentus</h3>
-                        <p>Производитель вентиляционного оборудования из Китая. Экспорт в Центральную Азию с 2008 года.</p>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Продукция</h4>
-                        <a href="#">Вентиляторы</a>
-                        <a href="#">Клапаны</a>
-                        <a href="#">Шумоглушители</a>
-                        <a href="#">Аксессуары</a>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Компания</h4>
-                        <a href="#">О нас</a>
-                        <a href="#">Проекты</a>
-                        <a href="#">Новости</a>
-                        <a href="#">Контакты</a>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Поддержка</h4>
-                        <a href="#">FAQ</a>
-                        <a href="#">Доставка</a>
-                        <a href="#">Гарантия</a>
-                        <a href="#">Политика</a>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    © 2026 TopVentus. Все права защищены.
-                </div>
+                <p>&copy; 2026 TopVentus. All rights reserved. | Professional Ventilation Equipment</p>
             </div>
         </footer>
     </div>
-    
+
     <script>
         function skipIntro() {
             const intro = document.getElementById('logoIntro');
-            const skipBtn = document.getElementById('skipIntro');
+            const skipBtn = document.querySelector('.skip-btn');
             const content = document.querySelector('.site-content');
-            
+
             intro.style.animation = 'none';
             intro.style.opacity = '0';
             intro.style.visibility = 'hidden';
-            
+
             skipBtn.style.display = 'none';
-            
+
             content.style.animation = 'none';
             content.style.opacity = '1';
         }
-        
-        // 动画结束后隐藏跳过按钮
+
+        // 动画结束后自动移除intro元素
         setTimeout(() => {
-            const skipBtn = document.getElementById('skipIntro');
-            if (skipBtn) {
-                skipBtn.style.display = 'none';
+            const intro = document.getElementById('logoIntro');
+            if (intro) {
+                intro.remove();
             }
-        }, 3500);
+        }, 4000);
     </script>
 </body>
 </html>
