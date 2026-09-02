@@ -810,3 +810,31 @@ img{max-width:100%;display:block}
     }
 }
 
+
+/* ===== 放大顶部联系方式 ===== */
+.hero-contact-info {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+}
+.hero-contact-info a {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+}
+/* hero区域联系方式放大 */
+.hero .contact-item,
+.hero-content .contact-item,
+.hero-info .contact-item {
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+}
+.hero .contact-item a,
+.hero-content .contact-item a,
+.hero-info .contact-item a {
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+}
+/* 顶部悬浮联系方式 */
+.top-contact-bar {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+}
