@@ -71,7 +71,7 @@
       "scoreDisplayMode": "numeric",
       "numericValue": 828.872,
       "numericUnit": "millisecond",
-      "displayValue": "0.8 s",
+      "displayValue": "0.9 s",
       "scoringOptions": {
         "p10": 1800,
         "median": 3000
@@ -85,7 +85,7 @@
       "scoreDisplayMode": "numeric",
       "numericValue": 7444.871999999999,
       "numericUnit": "millisecond",
-      "displayValue": "7.4 s",
+      "displayValue": "7.5 s",
       "scoringOptions": {
         "p10": 2500,
         "median": 4000
@@ -289,11 +289,11 @@
       "id": "interactive",
       "title": "Time to Interactive",
       "description": "Time to Interactive is the amount of time it takes for the page to become fully interactive. [Learn more about the Time to Interactive metric](https://developer.chrome.com/docs/lighthouse/performance/interactive/).",
-      "score": 0.48,
+      "score": 0.47,
       "scoreDisplayMode": "numeric",
       "numericValue": 7444.871999999999,
       "numericUnit": "millisecond",
-      "displayValue": "7.4 s"
+      "displayValue": "7.5 s"
     },
     "user-timings": {
       "id": "user-timings",
@@ -1820,38 +1820,7 @@
               "snippet": "<body>",
               "nodeLabel": "body"
             },
-            "score": 0.0003070885788147266
-          },
-          {
-            "node": {
-              "type": "node",
-              "lhId": "page-6-SPAN",
-              "path": "1,HTML,1,BODY,23,DIV,0,DIV,0,DIV,2,SPAN",
-              "selector": "div.topbar > div.container > div.topbar-left > span.topbar-hide",
-              "boundingRect": {
-                "top": 34,
-                "bottom": 74,
-                "left": 177,
-                "right": 396,
-                "width": 219,
-                "height": 40
-              },
-              "snippet": "<span class=\"topbar-hide\">",
-              "nodeLabel": "Промышленная зона Учэн, Дечжоу, Шаньдун, Китай"
-            },
-            "score": 0.0001456745533035838,
-            "subItems": {
-              "type": "subitems",
-              "items": [
-                {
-                  "extra": {
-                    "type": "url",
-                    "value": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2"
-                  },
-                  "cause": "Web font loaded"
-                }
-              ]
-            }
+            "score": 0.00217324225007345
           }
         ]
       },
@@ -5017,38 +4986,7 @@
                   "snippet": "<body>",
                   "nodeLabel": "body"
                 },
-                "score": 0.0003070885788147266
-              },
-              {
-                "node": {
-                  "type": "node",
-                  "lhId": "page-6-SPAN",
-                  "path": "1,HTML,1,BODY,23,DIV,0,DIV,0,DIV,2,SPAN",
-                  "selector": "div.topbar > div.container > div.topbar-left > span.topbar-hide",
-                  "boundingRect": {
-                    "top": 34,
-                    "bottom": 74,
-                    "left": 177,
-                    "right": 396,
-                    "width": 219,
-                    "height": 40
-                  },
-                  "snippet": "<span class=\"topbar-hide\">",
-                  "nodeLabel": "Промышленная зона Учэн, Дечжоу, Шаньдун, Китай"
-                },
-                "score": 0.0001456745533035838,
-                "subItems": {
-                  "type": "subitems",
-                  "items": [
-                    {
-                      "extra": {
-                        "type": "url",
-                        "value": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2"
-                      },
-                      "cause": "Web font"
-                    }
-                  ]
-                }
+                "score": 0.00217324225007345
               }
             ]
           }
@@ -5107,7 +5045,7 @@
       "title": "Optimize DOM size",
       "description": "A large DOM can increase the duration of style calculations and layout reflows, impacting page responsiveness. A large DOM will also increase memory usage. [Learn how to avoid an excessive DOM size](https://developer.chrome.com/docs/lighthouse/performance/dom-size/).",
       "score": 1,
-      "scoreDisplayMode": "informative",
+      "scoreDisplayMode": "numeric",
       "metricSavings": {
         "INP": 0
       },
@@ -8193,7 +8131,7 @@
       {
         "startTime": 14301.99,
         "name": "lh:gather:getArtifact:DevtoolsLog",
-        "duration": 0.03,
+        "duration": 0.02,
         "entryType": "measure"
       },
       {
@@ -9339,7 +9277,7 @@
       {
         "startTime": 19294.46,
         "name": "lh:computed:UnusedJavascriptSummary",
-        "duration": 0.29,
+        "duration": 0.22,
         "entryType": "measure"
       },
       {
