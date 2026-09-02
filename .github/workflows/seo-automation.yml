@@ -216,17 +216,19 @@ jobs:
           fi
 
       - name: Commit and push changes
+        continue-on-error: true
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git config pull.rebase false
           git add -A
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "SEO automation: update articles, social content, sitemap and meta tags"
-            git pull --rebase origin main
-            git push
-            echo "Changes committed and pushed"
+            git commit -m "SEO automation: update articles, social content, sitemap and meta tags" || echo "Commit failed or nothing to commit"
+            git pull origin main --no-rebase -X ours || echo "Pull failed, continuing with push"
+            git push origin main || echo "Push failed, will deploy from workspace directly"
+            echo "Changes committed and pushed (or attempted)"
           fi
 
       - name: Deploy to Cloudflare Pages
