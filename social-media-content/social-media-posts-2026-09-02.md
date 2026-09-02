@@ -27,7 +27,8 @@ Here are 4 tailored social media posts for your B2B industrial audience, designe
 
 ---
 
-### Facebook
+**Facebook**
+Когда мы проектируем здание, часто фокусируемся на эстетике и комфорте, забывая, что безопасность — это фундамент, на котором держится всё остальное. Противопожарные клапаны — та самая «невидимая» деталь, которая в критический момент может спасти жизни и имущество. В нашей новой статье разобрали актуальные требования и особенности монтажа, которые важно знать каждому инженеру и проектировщику.
 
 Каждый год инспекторы находят десятки нарушений в системах дымоудаления, и большинство из них связаны с неправильной установкой клапанов. 😱 Мы подготовили разбор, который поможет вам избежать штрафов и, что важнее, обеспечить реальную защиту объекта.
 
@@ -37,7 +38,8 @@ Here are 4 tailored social media posts for your B2B industrial audience, designe
 
 ---
 
-### LinkedIn
+**LinkedIn**
+Для инженеров и руководителей строительных проектов: правильный монтаж противопожарных клапанов напрямую влияет на безопасность и сроки сдачи объекта. Согласно нормативной документации, несоблюдение требований по огнестойкости воздуховодов приводит к 30% отказов систем при реальных испытаниях.
 
 **Инженерная безопасность: почему монтаж противопожарных клапанов требует больше, чем просто сварки.**
 
@@ -51,7 +53,8 @@ Here are 4 tailored social media posts for your B2B industrial audience, designe
 
 ---
 
-### Instagram
+**Instagram**
+🛠️ Когда речь идет о пожарной защите, нет места «на глазок». Противопожарные клапаны — это сложный механизм, который должен сработать безотказно в самый критический момент. В новой статье на TopVentus мы разобрали не только нормы и требования, но и практические нюансы монтажа, которые часто упускают даже опытные подрядчики. Сохраняйте в закладки, если работаете с вентиляцией или проектированием зданий! 🔥
 
 🛡️ Огонь не прощает ошибок в проектировании. Почему один и тот же клапан может быть надежным барьером или бесполезной железкой? Всё дело в монтаже! Наш эксперт подготовил статью о критических требованиях к установке и типичных нарушениях, которые видел на реальных объектах.
 
@@ -232,6 +235,37 @@ Here are four platform-specific social media posts designed to drive engagement 
 
 ---
 
+**2. Facebook (3-4 sentences)**  
+Picture this: a fire breaks out at 2 AM in a commercial kitchen. The HVAC system is running—and without a properly installed fire damper, flames and toxic smoke could travel to every floor in seconds. That’s why the difference between a life-saving damper and a decorative metal box often comes down to a few installation steps most people skip. We just published a breakdown of the must-know requirements and common pitfalls. Have you ever audited your building’s fire dampers? Let’s talk in the comments. 👇  
+👉 Read more: https://topventus.com/en/news-ai-fire-safety-2026-09-02  
+
+---
+
+**3. LinkedIn (professional B2B)**  
+Industry insight: Passive fire protection is only as strong as its weakest installation. In commercial HVAC, fire dampers are frequently specified correctly but installed improperly—leading to failed inspections and, worse, compromised compartmentation during a fire. Our latest guide covers NFPA code references, fusible link ratings, and the 10-step installation checklist that separates compliant projects from liability risks. Share this with your mechanical engineers and QA teams.  
+👉 https://topventus.com/en/news-ai-fire-safety-2026-09-02  
+#FireProtectionEngineering #HVACSystems #BuildingSafety  
+
+---
+
+**4. Instagram caption**  
+Image: A close-up of a stainless steel fire damper being secured into a duct opening, with a contractor’s hands using a drill and a building code manual visible in the background. 🔧  
+
+Fire dampers save lives—but only if they’re installed right. Did you know that even a 1/8-inch gap around the sleeve can void the fire rating? 🔥 This week’s article breaks down the exact installation requirements (and the 5 most common mistakes we see on job sites). Swipe up in bio to read the full guide and test your knowledge.  
+
+❓ Question for you: At what temperature does a standard fire damper’s fusible link melt? Drop your answer below! 👇  
+
+#FireDamper #HVACLife #MechanicalContractor #FireSafety #PassiveProtection #CommercialHVAC #BuildingCodes #MEPEngineering #ConstructionSafety #TopVentus
+
+---
+
+## Technical Guide: How to Choose a Fire Damper
+
+**URL:** https://topventus.com/en/news-ai-tech-guide-damper-selection-2026-09-02
+**Language:** en
+
+### Social Media Posts
+
 **Twitter/X**
 
 🚨 Did you know? A fire damper is only as good as its installation. A poor setup can render your entire passive fire protection system useless.
@@ -368,7 +402,7 @@ However, success hinges on navigating nuances that catch many exporters off guar
 
 Our new guide walks through the entire process: market assessment, regulatory compliance, distribution channel selection, and risk mitigation strategies specific to the region.
 
-Read the full guide: https://topventus.com/en/news-ai-export-guide-central-asia-2026-09-02
+Read the guide: [link]  
 
 #HVACExports #CentralAsiaBusiness #B2BMarketExpansion
 

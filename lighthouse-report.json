@@ -412,7 +412,7 @@
         "longestChain": {
           "duration": 327.3620000000228,
           "length": 3,
-          "transferSize": 48464
+          "transferSize": 18773
         }
       },
       "guidanceLevel": 1
@@ -1157,7 +1157,7 @@
       "scoreDisplayMode": "informative",
       "numericValue": 13.933,
       "numericUnit": "millisecond",
-      "displayValue": "10 ms",
+      "displayValue": "0 ms",
       "details": {
         "type": "table",
         "headings": [
@@ -7042,7 +7042,7 @@
         "width": 49,
         "height": 15
       },
-      "page-12-SPAN": {
+      "page-13-SPAN": {
         "id": "",
         "top": 298,
         "bottom": 303,
@@ -8027,7 +8027,7 @@
       {
         "startTime": 9956.85,
         "name": "lh:gather:getDevicePixelRatio",
-        "duration": 1.13,
+        "duration": 0.99,
         "entryType": "measure"
       },
       {
@@ -8075,7 +8075,7 @@
       {
         "startTime": 14233.11,
         "name": "lh:gather:getArtifact:Trace",
-        "duration": 0.01,
+        "duration": 0.02,
         "entryType": "measure"
       },
       {
@@ -8201,7 +8201,7 @@
       {
         "startTime": 15897.68,
         "name": "lh:gather:getArtifact:SourceMaps",
-        "duration": 0.04,
+        "duration": 0.05,
         "entryType": "measure"
       },
       {
@@ -9623,12 +9623,18 @@
       {
         "startTime": 18818.73,
         "name": "lh:audit:custom-controls-roles",
-        "duration": 0.01,
+        "duration": 0.02,
         "entryType": "measure"
       },
       {
         "startTime": 18818.75,
         "name": "lh:audit:focus-traps",
+        "duration": 0.02,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 16360.72,
+        "name": "lh:audit:focusable-controls",
         "duration": 0.01,
         "entryType": "measure"
       },
@@ -10019,7 +10025,7 @@
       {
         "startTime": 18925.64,
         "name": "lh:runner:generate",
-        "duration": 0.36,
+        "duration": 0.55,
         "entryType": "measure"
       }
     ],
@@ -10460,10 +10466,10 @@
         "audits[resource-summary].details.items[0].label",
         "audits[cls-culprits-insight].details.items[0].items[0].node.value"
       ],
-      "core/lib/i18n/i18n.js | imageResourceType": [
+      "core/lib/i18n/i18n.js | mediaResourceType": [
         "audits[resource-summary].details.items[1].label"
       ],
-      "core/lib/i18n/i18n.js | mediaResourceType": [
+      "core/lib/i18n/i18n.js | imageResourceType": [
         "audits[resource-summary].details.items[2].label"
       ],
       "core/lib/i18n/i18n.js | fontResourceType": [
@@ -10567,6 +10573,9 @@
       ],
       "core/audits/layout-shifts.js | columnScore": [
         "audits[layout-shifts].details.headings[1].label"
+      ],
+      "core/audits/layout-shifts.js | rootCauseFontChanges": [
+        "audits[layout-shifts].details.items[2].subItems.items[0].cause"
       ],
       "core/audits/long-tasks.js | title": [
         "audits[long-tasks].title"
@@ -11441,6 +11450,9 @@
       ],
       "core/audits/insights/cls-culprits-insight.js | columnScore": [
         "audits[cls-culprits-insight].details.items[0].headings[1].label"
+      ],
+      "node_modules/@paulirish/trace_engine/models/trace/insights/CLSCulprits.js | webFont": [
+        "audits[cls-culprits-insight].details.items[0].items[3].subItems.items[0].cause"
       ],
       "node_modules/@paulirish/trace_engine/models/trace/insights/DocumentLatency.js | title": [
         "audits[document-latency-insight].title"
