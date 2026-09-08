@@ -1,0 +1,3 @@
+﻿/en/* /en/:splat.html 200
+/zh/* /zh/:splat.html 200
+/* /:splat.html 200
